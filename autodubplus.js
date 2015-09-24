@@ -16,12 +16,13 @@ autoDub.userEnterLeave = function() {
 			entertext = "seeya @";
 		}
 
-		if ($.inArray(user, userList) == -1)
+		if ($.inArray(user, userList) == -1 || $.inArray(user, nowUsers) == -1)
 		{
 			console.log(user + entertext);
 			$("#chat-txt-message").val(entertext + user + "!");
 		}
 	});
+	userList = nowUsers;
 }
 
 autoDub.getUsers = function()
