@@ -15,7 +15,7 @@ autoDub.userEnterLeave = function() {
 		entertext = "seeya @";
 	}
 
-	if (autodub.notInList(nowUsers, userList) || autodub.notInList(userList, nowUsers))
+	if (autoDub.notInList(nowUsers, userList) || autoDub.notInList(userList, nowUsers))
 	{
 			console.log(user + entertext);
 			$("#chat-txt-message").val(entertext + user + "!");
