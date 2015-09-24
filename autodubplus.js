@@ -7,24 +7,32 @@ var userList= [];
 autoDub.userEnterLeave = function() {
 
 	nowUsers = autoDub.getUsers();
+	
+	if (nowUsers.length > userList.length)
+	{
+		entertext = "Heya @";		
+	} else {
+		entertext = "seeya @";
+	}
 
-	$.each(nowUsers, function(index, user) {
-		if (nowUsers.length > userList.length)
-		{
-			entertext = "Heya @";		
-		} else {
-			entertext = "seeya @";
-		}
-
-		if ($.inArray(user, userList) == -1 || $.inArray(user, nowUsers) == -1)
-		{
+	if (autodub.notInList(nowUsers, userList) || autodub.notInList(userList, nowUsers))
+	{
 			console.log(user + entertext);
 			$("#chat-txt-message").val(entertext + user + "!");
-		}
-	});
+	}
+
 	userList = nowUsers;
 }
-
+autoDub.notInList = function(listLoop, listCompare)
+{
+	$.each(listLoop, function(index, item) {
+		if ($.inArray(item, listCompare) == -1)
+		{
+			return item;
+		}
+	});
+	return false;
+}
 autoDub.getUsers = function()
 {
 	users = [];
