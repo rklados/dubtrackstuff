@@ -11,15 +11,15 @@ autoDub.userEnterLeave = function() {
 	$.each(nowUsers, function(index, user) {
 		if (nowUsers.length > userList.length)
 		{
-			entertext = " Entered!";		
+			entertext = "Heya @";		
 		} else {
-			entertext = " Left!";
+			entertext = "seeya @";
 		}
 
 		if ($.inArray(user, userList) == -1)
 		{
 			console.log(user + entertext);
-			$("#robmsgs").html(user + entertext);
+			$("#chat-txt-message").val(entertext + user + "!");
 		}
 	});
 }
@@ -55,9 +55,6 @@ autoDub.init = function(){
 	$('.currentSong').bind("DOMSubtreeModified", autoDub.userEnterLeave);
 
 	userList = autoDub.getUsers();
-	$("#pusher-chat-widget-input").append(
-			"<p><div id='robmsgs' style='color:red;'></div></p>"
-	);
 
 	console.log("autodub v"+autoDub.version+" is a go!");
 };
