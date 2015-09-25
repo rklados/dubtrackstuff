@@ -8,10 +8,10 @@ var userList= [];
 
 autoDub.test = function()
 {
-	console.log('in test');
+	
 var newlist = autoDub.getUsers();
 
-autoDub.testList(newlist, userList, function(user) { if(user) { console.log(user+' diff found'); $("#chat-txt-message").val("heya @"+user+"!");} autoDub.testList(userList, newlist, function(user) { if(user) { console.log(user+'otherdiff'); $("#chat-txt-message").val("see ya @"+user);} userList = newlist; });});
+autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li>"+user+" left.</li>");} userList = newlist; });});
 //autoDub.testList(userList, newlist, function(user) { console.log(user+'otherdiff'); userList = newlist; });
 }
 
