@@ -1,34 +1,77 @@
+
 var autoDub = {
 	started: false,
 	version: "00.02"
 }
 var userList= [];
 
-autoDub.userEnterLeave = function() {
 
+autoDub.test = function()
+{
+	console.log('in test');
+var newlist = autoDub.getUsers();
+
+autoDub.testList(newlist, userList, function(user) { if(user) { console.log(user+' diff found'); $("#chat-txt-message").val("heya @"+user+"!");} autoDub.testList(userList, newlist, function(user) { if(user) { console.log(user+'otherdiff'); $("#chat-txt-message").val("see ya @"+user);} userList = newlist; });});
+//autoDub.testList(userList, newlist, function(user) { console.log(user+'otherdiff'); userList = newlist; });
+}
+
+autoDub.testList = function(listLoop, listCompare, callback)
+{
+	console.log('in testList');
+	$.each(listLoop, function(index, item) {
+		console.log('testing '+item);
+		if ($.inArray(item, listCompare) < 0)
+		{
+			console.log(item+' is not in list');
+			callback(item);
+			return true;
+		} else {
+		
+		}
+	});
+	callback(false);
+}
+
+autoDub.userEnterLeave = function() {
+console.log('original users');
+console.log(userList);
 	nowUsers = autoDub.getUsers();
-	
+	var entertext = '';	
 	if (nowUsers.length > userList.length)
 	{
 		entertext = "Heya @";		
 	} else {
 		entertext = "seeya @";
 	}
-
-	if (autoDub.notInList(nowUsers, userList) || autoDub.notInList(userList, nowUsers))
+console.log(entertext);
+	var userEnter = autoDub.notInList(nowUsers, userList);
+	var userLeave = autoDub.notInList(userList, nowUsers);
+	
+	if (userEnter)
 	{
-			console.log(user + entertext);
-			$("#chat-txt-message").val(entertext + user + "!");
+		console.log(entertext + userEnter);
+		$("#chat-txt-message").val(entertext + userEnter + "!");
+	}
+	if (userLeave)
+	{
+		console.log(entertext+userLeave);
+		$("#chat-txt-message").val(entertext + userLeave + "!");
 	}
 
-	userList = nowUsers;
+	
+	console.log('new userlist');
+	console.log(userList);
 }
-autoDub.notInList = function(listLoop, listCompare)
+autoDub.notInList = function(listLoop, listCompare, callback)
 {
 	$.each(listLoop, function(index, item) {
-		if ($.inArray(item, listCompare) == -1)
+		console.log('testing '+item);
+		if ($.inArray(item, listCompare) < 0)
 		{
-			return item;
+			console.log(item+' is not in list');
+			callback(item);
+		} else {
+		
 		}
 	});
 	return false;
@@ -61,7 +104,7 @@ autoDub.init = function(){
 	$(".dubup").click();
 
 		
-	$('.currentSong').bind("DOMSubtreeModified", autoDub.userEnterLeave);
+	$('.room-user-counter').bind("DOMSubtreeModified", autoDub.test);
 
 	userList = autoDub.getUsers();
 
