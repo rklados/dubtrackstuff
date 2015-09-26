@@ -113,9 +113,9 @@ autoDub.init = function(){
 
 	userList = autoDub.getUsers();
 
-	$(".room-user-counter").mousedown(function() { userCheck = false; });
-	$(".loadRoomAva").mousedown(function() { userCheck = true; });
-	$(".main-room-active-link").mousedown(function() { autoDub.userReset()});
+	$(".room-user-counter").mousedown(function() { console.log('room-user-counter'); userCheck = false; });
+	$(".loadRoomAva").click(function() { console.log('loadRoomAva'); autoDub.userReset(); });
+	$(".main-room-active-link").mousedown(function() { console.log('main-room-active-link'); autoDub.userReset(); });
 	
 
 	console.log("autodub v"+autoDub.version+" is a go!");
