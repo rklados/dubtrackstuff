@@ -4,15 +4,17 @@ var autoDub = {
 	version: "00.02"
 }
 var userList= [];
-
+var checkUsers = true;
 
 autoDub.test = function()
 {
-	
-var newlist = autoDub.getUsers();
+	if (checkUsers == true)
+	{
+		var newlist = autoDub.getUsers();
 
-autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li>"+user+" left.</li>");} userList = newlist; });});
-//autoDub.testList(userList, newlist, function(user) { console.log(user+'otherdiff'); userList = newlist; });
+		autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li>"+user+" left.</li>");} userList = newlist; });});
+		//autoDub.testList(userList, newlist, function(user) { console.log(user+'otherdiff'); userList = newlist; });
+	}
 }
 
 autoDub.testList = function(listLoop, listCompare, callback)
@@ -97,7 +99,10 @@ autoDub.newSong = function(){
 	$(".dubup").click();
 	console.log("voted for "+songName);
 };
-
+autoDub.userReset = function() {
+	userList = autoDub.getUsers();
+	userCheck = true;
+}
 autoDub.init = function(){
 	$('.currentSong').bind("DOMSubtreeModified", autoDub.newSong);
 	
@@ -107,6 +112,11 @@ autoDub.init = function(){
 	$('.room-user-counter').bind("DOMSubtreeModified", autoDub.test);
 
 	userList = autoDub.getUsers();
+
+	$(".room-user-counter").mousedown(function() { userCheck = false; });
+	$("loadRoomAva").mousedown(function() { userCheck = true; });
+	$(".main-room-active-link").mousedown(function() { autoDub.userReset()});
+	
 
 	console.log("autodub v"+autoDub.version+" is a go!");
 };
