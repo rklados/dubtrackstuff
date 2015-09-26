@@ -100,9 +100,10 @@ autoDub.newSong = function(){
 	console.log("voted for "+songName);
 };
 autoDub.userReset = function() {
+	console.log("in userReset");
+	$(".autodub").remove();
 	userList = autoDub.getUsers();
 	userCheck = true;
-	$(".autodub").remove();
 }
 autoDub.init = function(){
 	$('.currentSong').bind("DOMSubtreeModified", autoDub.newSong);
