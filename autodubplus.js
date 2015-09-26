@@ -1,7 +1,7 @@
 
 var autoDub = {
 	started: false,
-	version: "00.02"
+	version: "00.03r"
 }
 var userList= [];
 var checkUsers = true;
@@ -12,7 +12,7 @@ autoDub.test = function()
 	{
 		var newlist = autoDub.getUsers();
 
-		autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li>"+user+" left.</li>");} userList = newlist; });});
+		autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li class='autodub'>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li>"+user+" left.</li>");} userList = newlist; });});
 		//autoDub.testList(userList, newlist, function(user) { console.log(user+'otherdiff'); userList = newlist; });
 	}
 }
@@ -119,6 +119,7 @@ autoDub.init = function(){
 	
 
 	console.log("autodub v"+autoDub.version+" is a go!");
+	$(".chat-main").append("<li class='autodub'>autodub v"+autoDub.version+"is a go!</li>");
 };
 
 if (!autoDub.started) autoDub.init();
