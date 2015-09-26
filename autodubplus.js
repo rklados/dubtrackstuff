@@ -12,7 +12,7 @@ autoDub.test = function()
 	{
 		var newlist = autoDub.getUsers();
 
-		autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li class='autodub'>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li>"+user+" left.</li>");} userList = newlist; });});
+		autoDub.testList(newlist, userList, function(user) { if(user) {  $(".chat-main").append("<li class='autodub'>"+user+" joined.</li>");} autoDub.testList(userList, newlist, function(user) { if(user) { $(".chat-main").append("<li class='autodub'>"+user+" left.</li>");} userList = newlist; });});
 		//autoDub.testList(userList, newlist, function(user) { console.log(user+'otherdiff'); userList = newlist; });
 	}
 }
