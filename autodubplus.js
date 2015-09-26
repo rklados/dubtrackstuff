@@ -102,6 +102,7 @@ autoDub.newSong = function(){
 autoDub.userReset = function() {
 	userList = autoDub.getUsers();
 	userCheck = true;
+	$(".autodub").remove();
 }
 autoDub.init = function(){
 	$('.currentSong').bind("DOMSubtreeModified", autoDub.newSong);
