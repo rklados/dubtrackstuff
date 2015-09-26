@@ -114,7 +114,7 @@ autoDub.init = function(){
 	userList = autoDub.getUsers();
 
 	$(".room-user-counter").mousedown(function() { userCheck = false; });
-	$("loadRoomAva").mousedown(function() { userCheck = true; });
+	$(".loadRoomAva").mousedown(function() { userCheck = true; });
 	$(".main-room-active-link").mousedown(function() { autoDub.userReset()});
 	
 
