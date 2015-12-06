@@ -391,7 +391,7 @@ if (!hello_run && Dubtrack.session.id) {
             var user = Dubtrack.session.get('username');
             if (content.indexOf('@'+user) >-1) {
                 if (options.let_active_afk) {
-                    $('#chat-txt-message').val('I am AFK at the moment.');
+                    $('#chat-txt-message').val('Leave me alone, eve!!');
                     Dubtrack.room.chat.sendMessage();
                     options.let_active_afk = false;
                     setTimeout(function() {
