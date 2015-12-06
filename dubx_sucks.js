@@ -389,7 +389,8 @@ if (!hello_run && Dubtrack.session.id) {
         afk_chat_respond: function(e) {
             var responses = ["Leave me alone, eve!!", "Shhh...don't tell her that I'm not here...", 
             "Keepin' the party going, eve!", "well why don't you add some tracks, then. Huh, eve?", "whatever. I'm here. shh.", 
-            "dangit, eve..."];
+            "dangit, eve...", "stop hacking me, @scytheria!!", ":gun:", "I blame your maker, eve.", "Whatever. I've been her the whole time!",
+            "I've been talking to you non-stop, eve! You don't remember? :(", "!upned", ":gun:", ":gun:"];
             var content = e.message;
             var user = Dubtrack.session.get('username');
             if (content.indexOf('@'+user) >-1) {
