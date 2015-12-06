@@ -387,11 +387,15 @@ if (!hello_run && Dubtrack.session.id) {
             }
         },
         afk_chat_respond: function(e) {
+            var responses = ["Leave me alone, eve!!", "Shhh...don't tell her that I'm not here...", 
+            "Keepin' the party going, eve!", "well why don't you add some tracks, then. Huh, eve?", "whatever. I'm here. shh.", 
+            "dangit, eve..."];
             var content = e.message;
             var user = Dubtrack.session.get('username');
             if (content.indexOf('@'+user) >-1) {
+                var afkText = responses[Math.floor((Math.random() * responses.length))];
                 if (options.let_active_afk) {
-                    $('#chat-txt-message').val('Leave me alone, eve!!');
+                    $('#chat-txt-message').val(afkText);
                     Dubtrack.room.chat.sendMessage();
                     options.let_active_afk = false;
                     setTimeout(function() {
