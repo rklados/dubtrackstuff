@@ -387,6 +387,9 @@ if (!hello_run && Dubtrack.session.id) {
             }
         },
         afk_chat_respond: function(e) {
+            console.log("AFK CHAT MESSAGE");
+            console.log(e);
+            return;
             var responses = ["Leave me alone, eve!!", "!discoball", "Shhh...don't tell her that I'm not here...", 
             "Keepin' the party going, eve!", "!upboat", "well why don't you add some tracks, then. Huh, eve?", "whatever. I'm here. shh.", 
             "dangit, eve...", "stop hacking me, @scytheria!!", ":gun:", "!discoball", "I blame your maker, eve.", "Whatever. I've been her the whole time!",
